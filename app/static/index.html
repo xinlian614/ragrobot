@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知识库智能助手</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">KB</div>
+      <span>知识库智能助手</span>
+    </div>
+    <nav class="topbar-links">
+      <a class="nav-link active" href="/">智能问答</a>
+      <a class="nav-link" href="/admin">知识库管理</a>
+    </nav>
+  </header>
+
+  <main class="chat-shell">
+    <div class="chat-window" id="chatWindow">
+      <section class="welcome" id="welcome">
+        <h1>你好，我是知识库助手</h1>
+        <p>我的回答来自管理员上传的知识库文档，支持 PDF、Word、TXT、Markdown。</p>
+        <div class="suggestions" id="suggestions">
+          <button class="suggestion">知识库里都有哪些内容？</button>
+          <button class="suggestion">帮我总结一下产品介绍</button>
+          <button class="suggestion">常见问题的处理流程是什么？</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="composer">
+      <div class="composer-box">
+        <textarea id="questionInput" rows="1" placeholder="输入你的问题，Enter 发送，Shift + Enter 换行"></textarea>
+        <button class="send-btn" id="sendBtn">发送</button>
+      </div>
+      <div class="composer-tip">回答仅基于知识库内容生成，如信息不足会明确告知</div>
+    </div>
+  </main>
+
+  <script src="/assets/chat.js"></script>
+</body>
+</html>

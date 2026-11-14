@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>知识库管理 - 知识库智能助手</title>
+  <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">KB</div>
+      <span>知识库智能助手</span>
+    </div>
+    <nav class="topbar-links">
+      <a class="nav-link" href="/">智能问答</a>
+      <a class="nav-link active" href="/admin">知识库管理</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">知识库管理</h1>
+    <p class="page-sub">上传文档后系统会自动切分、建立检索索引，解析完成后即可在问答页使用。</p>
+
+    <section class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">文档总数</div>
+        <div class="stat-value" id="statDocs">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">已就绪文档</div>
+        <div class="stat-value" id="statReady">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">知识分块</div>
+        <div class="stat-value" id="statChunks">-</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">上传知识库文件</h2>
+          <p class="card-desc" id="uploadHint">支持 PDF、DOCX、TXT、Markdown，单文件不超过 20MB</p>
+        </div>
+      </div>
+
+      <label class="dropzone" id="dropzone">
+        <input type="file" id="fileInput" multiple accept=".pdf,.docx,.txt,.md,.markdown" />
+        <div class="dropzone-title">点击选择文件，或拖拽文件到此处</div>
+        <div class="dropzone-hint">可一次选择多个文件，上传后自动解析入库</div>
+      </label>
+
+      <div class="pending-list" id="pendingList"></div>
+
+      <div class="actions-row">
+        <button class="btn-primary" id="uploadBtn" disabled>开始上传</button>
+        <button class="btn-ghost" id="clearBtn" disabled>清空列表</button>
+        <span class="card-desc" id="uploadState"></span>
+      </div>
+
+      <div class="upload-log" id="uploadLog"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">知识库文档</h2>
+          <p class="card-desc">删除文档会同时移除其全部知识分块</p>
+        </div>
+        <button class="btn-ghost" id="refreshBtn">刷新</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>文件名</th>
+              <th>类型</th>
+              <th>大小</th>
+              <th>分块数</th>
+              <th>状态</th>
+              <th>上传时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody id="docTableBody">
+            <tr><td colspan="7" class="empty">加载中...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <div>
+          <h2 class="card-title">当前模型配置</h2>
+          <p class="card-desc">来自服务端 .env 文件，修改后需重启服务</p>
+        </div>
+      </div>
+      <div class="config-grid" id="configGrid"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+  <script src="/assets/admin.js"></script>
+</body>
+</html>
